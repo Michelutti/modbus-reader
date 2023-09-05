@@ -1,27 +1,19 @@
-[
+[{
+  "tipo": "LigaDesliga",
+  "machine": {
+    "inputRegister": 2,
+    "discreteInput": 1
+  },
+  "map": [
     {
-      "tipo": "LigaDesliga",
-      "machine": {
-        "inputRegister": 1,
-        "discreteInput": 2
-      },
-      "map": [
-        {
-          "tipo": "discreteInput",
-          "endereco": 1,
-          "descricao": "liga_desliga"
-        },
-        {
-          "tipo": "inputRegister",
-          "endereco": 1,
-          "descricao": "velocidade"
-        },
-        {
-          "tipo": "inputRegister",
-          "endereco": 2,
-          "descricao": "temperatura"
-        }
-      ]
+      "tipo": "discreteInput",
+      "endereco": 1,
+      "descricao": "liga_desliga"
+    },
+    {
+      "tipo": "inputRegister",
+      "endereco": 1,
+      "descricao": "velocidade"
     }
   ]
-  
+}]
