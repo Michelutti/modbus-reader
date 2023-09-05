@@ -17,4 +17,4 @@ while True:
         print(regs)
     else:
         print("read error")
-    sleep(0.1)
+    sleep(1)

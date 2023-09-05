@@ -4,6 +4,21 @@ import time
 from pymongo import MongoClient
 from pyModbusTCP.client import ModbusClient
 
+import json
+
+# Replace 'your_file.json' with the actual path to your JSON file
+file_path = 'settings.json'
+
+try:
+    with open(file_path, 'r') as json_file:
+        data = json.load(json_file)
+        # Now 'data' contains the contents of the JSON file as a Python data structure
+        print(data)
+except FileNotFoundError:
+    print(f"The file '{file_path}' was not found.")
+except json.JSONDecodeError as e:
+    print(f"Error decoding JSON: {e}")
+
 # Modbus Configuration
 modbus_ip = "192.168.15.75"
 modbus_port =  502 # Default Modbus TCP port
