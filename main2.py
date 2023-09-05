@@ -1,3 +1,5 @@
+import certifi
+ca = certifi.where()
 import time
 from pymongo import MongoClient
 from pyModbusTCP.client import ModbusClient
@@ -8,7 +10,7 @@ modbus_port =  502 # Default Modbus TCP port
 modbus_slave_address = 1  # Change to your Modbus slave address
 
 # MongoDB Configuration
-mongo_client = MongoClient('mongodb://localhost:27017/')  # Change if MongoDB is running on a different host or port
+mongo_client = MongoClient('', tlsCAFile=ca)  # Change if MongoDB is running on a different host or port
 db = mongo_client['modbus_data']
 collection = db['readings']
 
@@ -34,13 +36,16 @@ def store_data_in_mongodb(data):
 while True:
     # Read Modbus data and store it in MongoDB
     modbus_data = read_modbus_data()
-    # store_data_in_mongodb(modbus_data)
+    store_data_in_mongodb(modbus_data)
 
     # Wait for 30 seconds
-    time.sleep(1)
+    time.sleep(5)
 
     # Check if 15 minutes have passed and perform MongoDB cleanup
-    current_time = time.time()
+    # current_time = time.time()
     #if current_time % (15 * 60) < 30:
         # Remove old data (optional)
         #collection.delete_many({'timestamp': {'$lt': current_time - (15 * 60)}})
+
+
+# collection.insert_one({'data': 1, 'timestamp': time.time()})
